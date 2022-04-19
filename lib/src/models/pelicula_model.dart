@@ -69,8 +69,9 @@ class Pelicula {
     overview         = json['overview'];
     releaseDate      = json['release_date'];
 
-
   }
+
+  
 
 
 }

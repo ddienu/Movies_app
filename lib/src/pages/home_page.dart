@@ -23,12 +23,13 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _swiperTarjetas(),
-        ],
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        _swiperTarjetas(),
+        _footer(context),
+      ],
       )
-    );
+   );
   }
 
   _swiperTarjetas() {
@@ -51,6 +52,29 @@ class HomePage extends StatelessWidget {
             );
         } 
       },
+    );
+  }
+
+  _footer(context) {
+
+    return Container(
+
+      width: double.infinity,
+      child: Column(
+        children: [
+          Text('Películas populares', style: Theme.of(context).textTheme.subtitle1,),
+
+          FutureBuilder(
+            future: peliculasProvider.getPopulares(),
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+
+              snapshot.data?.forEach( (p) => print(p.title) );
+
+              return Container();
+            },
+          ),
+        ],
+      ),
     );
   }
 }

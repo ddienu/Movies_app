@@ -4,6 +4,8 @@ import 'package:movies_app/src/Widget/card_swiper_widget.dart';
 
 import 'package:movies_app/src/providers/peliculas_provider.dart';
 
+import 'package:movies_app/src/Widget/movie_horizontal.dart';
+
 class HomePage extends StatelessWidget {
 
   final peliculasProvider = PeliculasProvider();
@@ -58,7 +60,7 @@ class HomePage extends StatelessWidget {
   _footer(context) {
 
     return Container(
-
+      
       width: double.infinity,
       child: Column(
         children: [
@@ -66,9 +68,14 @@ class HomePage extends StatelessWidget {
 
           FutureBuilder(
             future: peliculasProvider.getPopulares(),
-            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
 
-              snapshot.data?.forEach( (p) => print(p.title) );
+              if (snapshot.hasData){
+                return MovieHorizontal( peliculas: snapshot.data);
+                              
+              } else {
+                return CircularProgressIndicator();
+              }
 
               return Container();
             },

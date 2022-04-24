@@ -63,8 +63,12 @@ class HomePage extends StatelessWidget {
       
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Películas populares', style: Theme.of(context).textTheme.subtitle1,),
+          Container(
+            padding: EdgeInsets.only(left: 5.0),
+            child: Text('Películas populares', style: Theme.of(context).textTheme.subtitle1,)),
+          SizedBox(height: 5.0),
 
           FutureBuilder(
             future: peliculasProvider.getPopulares(),

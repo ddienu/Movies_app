@@ -15,21 +15,21 @@ class MovieHorizontal extends StatelessWidget {
   final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-      height: _screenSize.height * 0.2,
+      height: _screenSize.height * 0.4,    
       child: PageView(
         pageSnapping: false,
         controller: PageController(
           initialPage: 1,
           viewportFraction: 0.3,
         ),
-        children: _tarjetas(),
+        children: _tarjetas(context),
         
       ),
     );
 
   }
 
-  List<Widget> _tarjetas() {
+  List<Widget> _tarjetas(BuildContext context) {
 
         return peliculas.map(( pelicula ) {
 
@@ -39,6 +39,7 @@ class MovieHorizontal extends StatelessWidget {
             child: Column(
               children: [
                 ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
                   child: FadeInImage(
                     fit: BoxFit.cover,
                     height: 160.0,
@@ -46,7 +47,13 @@ class MovieHorizontal extends StatelessWidget {
                     image: NetworkImage( pelicula.getPosterImg()
                     )
                   ),
-                )
+                ),
+                SizedBox(height: 5.0),
+                Text(
+                  pelicula.title,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.caption,
+                  )
               ],
             ),
 

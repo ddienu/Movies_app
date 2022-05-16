@@ -15,12 +15,14 @@ class PeliculasProvider {
 
   int _popularesPage = 0;
 
+  bool _cargando = false;
+
   List<Pelicula> _populares = [];
 
 
   final _popularesStreamController = StreamController<List<Pelicula>>.broadcast();
 
-
+ 
   Function(List<Pelicula>) get popularesSink   => _popularesStreamController.sink.add;
 
   Stream<List<Pelicula>>   get popularesStream => _popularesStreamController.stream;
@@ -58,6 +60,10 @@ final resp = await http.get( url );
 
 Future<List<Pelicula>> getPopulares () async {
 
+  if ( _cargando ) return [];
+
+  _cargando = true;
+
   _popularesPage++;
 
   final url = Uri.https(_url, '3/movie/popular', {
@@ -72,6 +78,8 @@ Future<List<Pelicula>> getPopulares () async {
 
 _populares.addAll( resp );
 popularesSink( _populares );
+
+_cargando = false;
 
 return resp;
 

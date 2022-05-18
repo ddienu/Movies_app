@@ -76,4 +76,12 @@ class Pelicula {
         return 'https://image.tmdb.org/t/p/original/$posterPath';
       }
     }
+    getBackgroundImg(){
+
+    if ( posterPath == null ){
+      return 'https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png';
+      } else {
+        return 'https://image.tmdb.org/t/p/original/$backdropPath';
+      }
+    }
   }

@@ -14,6 +14,9 @@ class Peliculas {
 }
 
 class Pelicula {
+
+  String uniqueId;
+
   int voteCount;
   int id;
   bool video;
@@ -31,6 +34,8 @@ class Pelicula {
 
   Pelicula({
 
+
+    required this.uniqueId,
     required this.voteCount,
     required this.id,
     required this.video,
@@ -65,7 +70,9 @@ class Pelicula {
     backdropPath : json['backdrop_path'],
     adult : json['adult'],
     overview : json['overview'],
-    releaseDate : json['release_date'],);
+    releaseDate : json['release_date'], 
+    uniqueId: '',
+    );
   }
 
   getPosterImg(){

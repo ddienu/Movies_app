@@ -6,7 +6,7 @@ import 'package:movies_app/src/models/pelicula_model.dart';
 import 'package:movies_app/src/providers/peliculas_provider.dart';
 
 class PeliculaDetalle extends StatelessWidget {
-  const PeliculaDetalle({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class PeliculaDetalle extends StatelessWidget {
       child: Row(
         children: [
           Hero(
-            tag: pelicula.id,
+            tag: pelicula.uniqueId,
             child: ClipRRect(
               borderRadius: BorderRadius.circular( 20.0 ),
               child: Image(

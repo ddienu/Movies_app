@@ -5,6 +5,7 @@ import 'package:movies_app/src/Widget/card_swiper_widget.dart';
 import 'package:movies_app/src/providers/peliculas_provider.dart';
 
 import 'package:movies_app/src/Widget/movie_horizontal.dart';
+import 'package:movies_app/src/search/search_delegate.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -24,7 +25,9 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon (Icons.search),
-            onPressed: (){},
+            onPressed: (){
+              showSearch(context: context, delegate: DataSearch());
+            },
           )
         ],
       ),

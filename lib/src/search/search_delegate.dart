@@ -5,13 +5,25 @@ class DataSearch extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     // TODO: implement buildActions
-    throw UnimplementedError();
+    return [
+      IconButton(
+        onPressed: (() {
+          query: '';
+        }), 
+        icon: Icon( Icons.clear))
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
     // TODO: implement buildLeading
-    throw UnimplementedError();
+    return IconButton(
+      onPressed: (() {
+        close(context, Null);
+      }), 
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.arrow_menu, 
+        progress: transitionAnimation));
   }
 
   @override

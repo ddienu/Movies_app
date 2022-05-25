@@ -1,5 +1,18 @@
 import 'package:flutter/material.dart';
 
+final peliculas = [
+  'Batman'
+  'Sonic 2'
+  'Dr Strange'
+  'Maverick'
+  'Jurassic World'
+];
+
+final peliculasRecientes = [
+  'Batman'
+  'Sonic 2'
+];
+
 
 class DataSearch extends SearchDelegate {
   @override
@@ -35,7 +48,25 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
-    throw UnimplementedError();
+    
+
+    final listaSugerida = ( query.isEmpty)
+                          ? peliculasRecientes
+                          : peliculas.where(
+                            (p) => p.toLowerCase().startsWith(query.toLowerCase())
+                            );
+
+    return ListView.builder(
+      itemCount: listaSugerida.length,
+      itemBuilder: (context, i){
+        return ListTile(
+          leading: Icon(Icons.movie),
+          title: Text(peliculasRecientes[i]),
+          onTap: (){
+          },
+        );
+
+      });
   }
 
 

@@ -49,7 +49,7 @@ final resp = await http.get( url );
 
 }
 
- Future<List<Pelicula>> getEnCines () async { 
+Future<List<Pelicula>> getEnCines () async { 
 
    final url = Uri.https(_url, '3/movie/now_playing', {
      'api_key'  : _apikey,
@@ -104,6 +104,18 @@ Future<List<Actor>> getCast (String peliId) async {
   return cast.actores;
 }
 
+
+Future<List<Pelicula>> buscarPelicula(String query) async { 
+
+   final url = Uri.https(_url, '3/search/movie', {
+     'api_key'  : _apikey,
+     'language' : _language,
+     'query'    : query,
+   });
+
+  return await _procesarRespuesta(url); 
+
+}
  
 
 
